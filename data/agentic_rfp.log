@@ -1,0 +1,21 @@
+2026-10-21 18:35:03,840 INFO agentic_rfp: UI evaluation submitted: supplier_count=3 model=openrouter/free endpoint=https://openrouter.ai/api/v1
+2026-10-21 18:35:03,840 INFO agentic_rfp.orchestrator: Evaluation run started: run_id=16f4352e-9992-44db-aac1-5d70b9d74a65 supplier_count=3
+2026-10-21 18:35:03,895 INFO agentic_rfp.orchestrator: Supplier 1/3: PDF extraction started
+2026-10-21 18:35:03,964 INFO agentic_rfp.orchestrator: Supplier 1/3: PDF extraction completed (characters=5134)
+2026-10-21 18:35:03,968 INFO agentic_rfp.orchestrator: Supplier 1/3: evaluation agent started
+2026-10-21 18:35:03,973 INFO agentic_rfp.evaluation_agent: LLM request started: model=openrouter/free endpoint=https://openrouter.ai/api/v1/chat/completions
+2026-10-21 18:35:53,009 INFO agentic_rfp.evaluation_agent: LLM request succeeded: model=openrouter/free endpoint=https://openrouter.ai/api/v1/chat/completions
+2026-10-21 18:35:53,009 INFO agentic_rfp.orchestrator: Supplier 1/3: response validated
+2026-10-21 18:35:53,009 INFO agentic_rfp.orchestrator: Supplier 2/3: PDF extraction started
+2026-10-21 18:35:53,114 INFO agentic_rfp.orchestrator: Supplier 2/3: PDF extraction completed (characters=5425)
+2026-10-21 18:35:53,114 INFO agentic_rfp.orchestrator: Supplier 2/3: evaluation agent started
+2026-10-21 18:35:53,123 INFO agentic_rfp.evaluation_agent: LLM request started: model=openrouter/free endpoint=https://openrouter.ai/api/v1/chat/completions
+2026-10-21 18:36:45,174 INFO agentic_rfp.evaluation_agent: LLM request succeeded: model=openrouter/free endpoint=https://openrouter.ai/api/v1/chat/completions
+2026-10-21 18:36:45,174 INFO agentic_rfp.orchestrator: Supplier 2/3: response validated
+2026-10-21 18:36:45,182 INFO agentic_rfp.orchestrator: Supplier 3/3: PDF extraction started
+2026-10-21 18:36:45,258 INFO agentic_rfp.orchestrator: Supplier 3/3: PDF extraction completed (characters=5586)
+2026-10-21 18:36:45,258 INFO agentic_rfp.orchestrator: Supplier 3/3: evaluation agent started
+2026-10-21 18:36:45,273 INFO agentic_rfp.evaluation_agent: LLM request started: model=openrouter/free endpoint=https://openrouter.ai/api/v1/chat/completions
+2026-10-21 18:37:12,874 INFO agentic_rfp.evaluation_agent: LLM request succeeded: model=openrouter/free endpoint=https://openrouter.ai/api/v1/chat/completions
+2026-10-21 18:37:12,874 INFO agentic_rfp.orchestrator: Supplier 3/3: response validated
+2026-10-21 18:37:12,910 INFO agentic_rfp.orchestrator: Evaluation run completed: run_id=16f4352e-9992-44db-aac1-5d70b9d74a65 supplier_count=3

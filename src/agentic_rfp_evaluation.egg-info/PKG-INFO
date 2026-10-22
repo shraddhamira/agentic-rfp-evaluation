@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: agentic-rfp-evaluation
+Version: 0.1.0
+Summary: Evidence-backed agentic supplier proposal evaluation
+Requires-Python: >=3.11
