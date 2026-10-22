@@ -68,7 +68,11 @@ if old_model in {"openai/gpt-5.6-luna", "gpt-5.6-luna"}:
 elif old_model in {option.split("/", 1)[1] for option in MODEL_OPTIONS if option.startswith("openai/")}:
     st.session_state["llm_model"] = f"openai/{old_model}"
 
-st.title("Agentic RFP Evaluation")
+header_title, diagnostic_menu_slot = st.columns([8, 1])
+with header_title:
+    st.title("Agentic RFP Evaluation")
+with diagnostic_menu_slot:
+    diagnostic_menu_slot = st.empty()
 st.caption("Evidence-backed supplier scoring, peer comparison, and deterministic ranking")
 
 try:
@@ -188,22 +192,24 @@ if submitted:
             safe_error = str(exc).replace(api_key, "[REDACTED API KEY]")[:600]
             app_logger.error("UI evaluation failed: error_type=%s message=%s", type(exc).__name__, safe_error)
             st.error(f"Evaluation failed: {exc}")
-            st.info("Open the diagnostic log below for the request ID and pipeline steps. API keys and proposal text are excluded.")
+            st.info("Open Diagnostic logs in the top-right menu for the request ID and pipeline steps. API keys and proposal text are excluded.")
     # Drop the local reference as soon as processing or validation finishes.
     api_key = ""
 
 result = st.session_state.get("last_run_result")
 
-with st.expander("Diagnostic logs", expanded=evaluation_failed):
-    st.caption(f"Log file: {LOG_PATH}")
-    try:
-        log_lines = LOG_PATH.read_text(encoding="utf-8").splitlines()[-200:]
-        if log_lines:
-            st.code("\n".join(log_lines), language="text")
-        else:
-            st.caption("No log entries yet. Run an evaluation to populate this log.")
-    except OSError as log_exc:
-        st.warning(f"Could not read diagnostic log: {log_exc}")
+with diagnostic_menu_slot.container():
+    with st.popover("⋮", help="Open app diagnostics", use_container_width=True):
+        st.subheader("Diagnostic logs")
+        st.caption(f"Log file: {LOG_PATH}")
+        try:
+            log_lines = LOG_PATH.read_text(encoding="utf-8").splitlines()[-200:]
+            if log_lines:
+                st.code("\n".join(log_lines), language="text")
+            else:
+                st.caption("No log entries yet. Run an evaluation to populate this log.")
+        except OSError as log_exc:
+            st.warning(f"Could not read diagnostic log: {log_exc}")
 
 if result:
     st.header("Leaderboard")

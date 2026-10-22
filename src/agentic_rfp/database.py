@@ -91,6 +91,8 @@ def initialize_database(db_path: str | Path) -> None:
     """Create the schema if it does not already exist."""
     with closing(connect(db_path)) as connection, connection:
         connection.executescript(SCHEMA)
+        # Remove the temporary response cache introduced in an earlier version.
+        connection.execute("DROP TABLE IF EXISTS evaluation_cache")
 
 
 def seed_default_criteria(db_path: str | Path) -> None:
